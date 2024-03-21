@@ -1,0 +1,23 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+
+        leftSide = 0 #buy
+        rightSide = 1 #sell
+
+        profit = 0
+
+        while rightSide < len(prices): 
+            currentProfit = prices[rightSide] - prices[leftSide]
+        
+            if prices[leftSide] < prices[rightSide]: 
+                profit = max(currentProfit, profit)
+            else: 
+                leftSide = rightSide
+
+            rightSide += 1
+
+        return profit
